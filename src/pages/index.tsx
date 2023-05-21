@@ -1,41 +1,17 @@
 // pages/index.tsx
 
-import React from "react";
-import Link from "next/link";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import steps from "@/utils/StepsRoutes";
 
 const Home: React.FC = () => {
-  return (
-    <div>
-      <h1>Bienvenido a la página principal</h1>
-      <ul>
-        <li>
-          <Link href="/datos-cliente">
-            Datos del cliente
-          </Link>
-        </li>
-        <li>
-          <Link href="/correo">
-            Correo
-          </Link>
-        </li>
-        <li>
-          <Link href="/direccion-apartamento">
-            Dirección del apartamento
-          </Link>
-        </li>
-        <li>
-          <Link href="/numero-piso">
-            Número de piso
-          </Link>
-        </li>
-        <li>
-          <Link href="/opciones">
-            Opciones del apartamento
-          </Link>
-        </li>
-      </ul>
-    </div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(steps[0].path);
+  });
+
+  return;
 };
 
 export default Home;

@@ -1,31 +1,56 @@
-import React from "react";
-import Step1 from "./steps/Step1";
-import Step2 from "./steps/Step2";
-import Step3 from "./steps/Step3";
-import Step4 from "./steps/Step4";
-import Step5 from "./steps/Step5";
+import React, { useState } from "react";
+import STEPS from "@/utils/StepsRoutes";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { setCurrentStep } from "@/redux/reducers/counterSlice";
 
+const steps = STEPS;
 
-const steps = [Step1, Step2, Step3, Step4, Step5];
+// Importar otros componentes de pasos
 
-interface StepContainerProps {
-  currentStep: number;
-  totalSteps: number;
-  onStepChange: (nextStep: number) => void;
-}
+const StepContainer: React.FC = () => {
+  const dispatch = useDispatch();
+  const currentStep = useSelector(
+    (state: RootState) => state.counter.currentStep
+  );
+  const totalSteps = steps.length - 1;
+  const router = useRouter();
 
-const StepContainer: React.FC<StepContainerProps> = ({
-  currentStep,
-  totalSteps,
-  onStepChange,
-}) => {
-  const StepComponent = steps[currentStep];
+  const handleNextStep = () => {
+    dispatch(setCurrentStep(currentStep + 1));
+    router.push(`/${steps[currentStep].path}`);
+  };
+
+  const handlePreviousStep = () => {
+    dispatch(setCurrentStep(currentStep - 1));
+    router.push(`/${steps[currentStep - 1].path}`);
+  };
+
+  const renderCurrentStep = () => {
+    const {
+      component: StepComponent,
+      buttons: { back, next },
+    } = steps[currentStep - 1];
+
+    return (
+      <StepComponent
+        onNextStep={next && handleNextStep}
+        onPreviousStep={back && handlePreviousStep}
+      />
+    );
+  };
 
   return (
     <div>
-      <StepComponent />
-      <button onClick={() => onStepChange(currentStep - 1)}>Anterior</button>
-      <button onClick={() => onStepChange(currentStep + 1)}>Siguiente</button>
+      {currentStep <= totalSteps && (
+        <div>
+          Step {currentStep} of {totalSteps}
+        </div>
+      )}
+
+      {renderCurrentStep()}
+      {currentStep > 1 && <button onClick={handlePreviousStep}>Atrás</button>}
     </div>
   );
 };
