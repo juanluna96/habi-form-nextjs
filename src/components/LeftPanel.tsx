@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import SummaryForm from "./forms/SummaryForm";
 
 const LeftPanel: React.FC = () => {
   return (
     <div>
       <h2>Panel derecho</h2>
-      {/* Aquí se muestra el resumen de los datos ingresados */}
+      <SummaryForm sideBar={true} />
     </div>
   );
 };

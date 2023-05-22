@@ -5,6 +5,8 @@ import StepContainer from "../components/StepContainer";
 import STEPS from "@/utils/StepsRoutes";
 import { useDispatch } from "react-redux";
 import { setCurrentStep } from "@/redux/reducers/counterSlice";
+import SummaryForm from "@/components/forms/SummaryForm";
+import LeftPanel from "@/components/LeftPanel";
 
 const steps = STEPS;
 
@@ -37,6 +39,7 @@ const StepPage: React.FC = () => {
         totalSteps={totalSteps}
         onStepChange={handleStepChange}
       />
+      {totalSteps !== currentStep?.order && <LeftPanel />}
     </Layout>
   );
 };

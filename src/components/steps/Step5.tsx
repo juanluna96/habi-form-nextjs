@@ -15,14 +15,6 @@ const Step5 = ({ onPreviousStep, onNextStep }) => {
     amenities: aparment_props,
   };
 
-  const validate = (values) => {
-    const { bbq, communalRoom, playground } = values.amenities;
-    if (!bbq && !communalRoom && !playground) {
-      return { amenities: "Debe seleccionar al menos una opción" };
-    }
-    return {};
-  };
-
   const handleSubmit = (values) => {
     dispatch(setLoading(true));
     dispatch(setStep5Data({ apartment_props: values.amenities }));
@@ -34,11 +26,7 @@ const Step5 = ({ onPreviousStep, onNextStep }) => {
   return (
     <div>
       <h2>Paso 5: Opciones de Amenidades</h2>
-      <Formik
-        initialValues={initialValues}
-        validate={validate}
-        onSubmit={handleSubmit}
-      >
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <div>
             <label>
