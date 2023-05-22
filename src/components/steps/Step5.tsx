@@ -10,8 +10,11 @@ import { CheckboxContainer } from "@/assets/styles/forms.style";
 import { CheckboxLabel } from "@/assets/styles/forms.style";
 import { SubmitButton } from "@/assets/styles/forms.style";
 import { BiSkipNextCircle } from "react-icons/bi";
+interface StepProps {
+  onNextStep: () => void;
+}
 
-const Step5 = ({ onPreviousStep, onNextStep }) => {
+const Step5: React.FC<StepProps> = ({ onNextStep }) => {
   const dispatch = useDispatch();
   const aparment_props = useSelector(
     (state: RootState) => state.form.apartment_props
@@ -21,7 +24,7 @@ const Step5 = ({ onPreviousStep, onNextStep }) => {
     amenities: aparment_props,
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values: typeof initialValues) => {
     dispatch(setLoading(true));
     dispatch(setStep5Data({ apartment_props: values.amenities }));
     dispatch(setLoading(false));

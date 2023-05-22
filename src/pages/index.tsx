@@ -1,10 +1,8 @@
-// pages/index.tsx
-
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import steps from "@/utils/StepsRoutes";
 
-const Home: React.FC = () => {
+const Home = () => {
   const router = useRouter();
 
   useEffect(() => {

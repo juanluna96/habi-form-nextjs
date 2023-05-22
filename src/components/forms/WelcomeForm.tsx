@@ -1,4 +1,5 @@
 import { ContainerWelcome, Heading } from "@/assets/styles/welcome.style";
+import { RootState } from "@/redux/store";
 import steps from "@/utils/StepsRoutes";
 import Image from "next/image";
 import { useSelector } from "react-redux";

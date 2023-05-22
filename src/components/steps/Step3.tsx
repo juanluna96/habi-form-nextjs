@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -13,8 +13,11 @@ import {
   StyledErrorMessage,
   SubmitButton,
 } from "@/assets/styles/forms.style";
+interface StepProps {
+  onNextStep: () => void;
+}
 
-const Step3 = ({ onNextStep, onPreviousStep }) => {
+const Step3: React.FC<StepProps> = ({ onNextStep }) => {
   const dispatch = useDispatch();
   const address = useSelector((state: RootState) => state.form.address);
 
@@ -26,7 +29,7 @@ const Step3 = ({ onNextStep, onPreviousStep }) => {
 
   const initialValues = { address };
 
-  const handleSubmit = (values: { address: string }) => {
+  const handleSubmit = (values: typeof initialValues) => {
     dispatch(setLoading(true));
     dispatch(setStep3Data({ address: values.address }));
     dispatch(setLoading(false));

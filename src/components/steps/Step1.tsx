@@ -1,12 +1,11 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
+import { Formik, Form, Field } from "formik";
 import { setStep1Data } from "@/redux/reducers/formSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { setLoading } from "@/redux/reducers/loaderSlicer";
 import { BiSkipNextCircle } from "react-icons/bi";
 import {
-  FormContainer,
   FormGroup,
   Input,
   Label,

@@ -14,7 +14,11 @@ import {
   SubmitButton,
 } from "@/assets/styles/forms.style";
 
-const Step2 = ({ onNextStep, onPreviousStep }) => {
+interface StepProps {
+  onNextStep: () => void;
+}
+
+const Step2: React.FC<StepProps> = ({ onNextStep }) => {
   const dispatch = useDispatch();
   const email = useSelector((state: RootState) => state.form.email);
 
@@ -26,7 +30,7 @@ const Step2 = ({ onNextStep, onPreviousStep }) => {
 
   const initialValues = { email };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values: typeof initialValues) => {
     dispatch(setLoading(true));
     dispatch(setStep2Data({ email: values.email }));
     dispatch(setLoading(false));

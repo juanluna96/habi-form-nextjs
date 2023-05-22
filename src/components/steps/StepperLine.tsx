@@ -23,7 +23,17 @@ const connectorStyleConfig = {
   style: "solid",
 };
 
-const StepperLine = ({ steps, currentStep, totalSteps }) => {
+interface StepProps {
+  steps: Array<any>;
+  currentStep: number;
+  totalSteps: number;
+}
+
+const StepperLine: React.FC<StepProps> = ({
+  steps,
+  currentStep,
+  totalSteps,
+}) => {
   return (
     <Stepper
       activeStep={currentStep - 1}

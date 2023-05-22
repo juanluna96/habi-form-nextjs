@@ -13,8 +13,11 @@ import {
   StyledErrorMessage,
   SubmitButton,
 } from "@/assets/styles/forms.style";
+interface StepProps {
+  onNextStep: () => void;
+}
 
-const Step4 = ({ onPreviousStep, onNextStep }) => {
+const Step4: React.FC<StepProps> = ({ onNextStep }) => {
   const dispatch = useDispatch();
   const floorNumber = useSelector((state: RootState) => state.form.floorNumber);
 
@@ -29,7 +32,7 @@ const Step4 = ({ onPreviousStep, onNextStep }) => {
       .required("Campo obligatorio"),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values: typeof initialValues) => {
     dispatch(setLoading(true));
     dispatch(setStep4Data({ floorNumber: values.floorNumber }));
     dispatch(setLoading(false));

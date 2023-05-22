@@ -24,7 +24,6 @@ import { useRouter } from "next/router";
 const SummaryForm = ({ sideBar }) => {
   const router = useRouter();
   const STEPS = steps;
-  //   const router = useRouter();
   const dispatch = useDispatch();
   const form = useSelector((state: RootState) => state.form);
   const { fullName, email, address, floorNumber, apartment_props } = form;

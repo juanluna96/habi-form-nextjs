@@ -11,8 +11,6 @@ import { CircleButton } from "@/assets/styles/buttons.style";
 
 const steps = STEPS;
 
-// Importar otros componentes de pasos
-
 const StepContainer: React.FC = () => {
   const dispatch = useDispatch();
   const currentStep = useSelector(

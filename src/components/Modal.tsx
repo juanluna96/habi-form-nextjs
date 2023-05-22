@@ -8,15 +8,22 @@ import {
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { GrClose } from "react-icons/gr";
+interface ModalProps {
+  show: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}
 
-const Modal = ({ show, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
     setIsBrowser(true);
   }, []);
 
-  const handleCloseClick = (e) => {
+  const handleCloseClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
     onClose();
   };
