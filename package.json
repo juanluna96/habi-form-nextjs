@@ -19,10 +19,15 @@
     "next": "13.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-form-stepper": "^2.0.3",
+    "react-icons": "^4.8.0",
+    "react-particles": "^2.9.3",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.10",
+    "sweetalert2": "^11.7.5",
+    "tsparticles": "^2.9.3",
     "typescript": "5.0.4",
     "yup": "^1.1.1"
   }
