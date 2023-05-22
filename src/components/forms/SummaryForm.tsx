@@ -35,7 +35,7 @@ const SummaryForm = ({ sideBar }) => {
       text: "Uno de nuestros acesores, revisara tu informacion y te contactara",
       iconColor: "#7c04fc",
       showConfirmButton: false,
-      timer: 6500,
+      timer: 2500,
     }).then((result) => {
       dispatch(resetForm());
       dispatch(setCurrentStep(1));
