@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import STEPS from "@/utils/StepsRoutes";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { setCurrentStep } from "@/redux/reducers/counterSlice";
+import StepperLine from "./steps/StepperLine";
+import { ContainerSteps } from "@/assets/styles/formCard.style";
+import { AiOutlineBackward } from "react-icons/ai";
+import { CircleButton } from "@/assets/styles/buttons.style";
 
 const steps = STEPS;
 
@@ -24,7 +28,7 @@ const StepContainer: React.FC = () => {
 
   const handlePreviousStep = () => {
     dispatch(setCurrentStep(currentStep - 1));
-    router.push(`/${steps[currentStep - 1].path}`);
+    router.back();
   };
 
   const renderCurrentStep = () => {
@@ -42,16 +46,29 @@ const StepContainer: React.FC = () => {
   };
 
   return (
-    <div>
+    <ContainerSteps>
+      {currentStep > 1 && (
+        <CircleButton onClick={handlePreviousStep}>
+          <AiOutlineBackward />
+        </CircleButton>
+      )}
       {currentStep <= totalSteps && (
         <div>
-          Step {currentStep} of {totalSteps}
+          <StepperLine
+            {...{
+              currentStep,
+              steps,
+              totalSteps,
+            }}
+          />
+          <h2>
+            Paso {currentStep}: {steps[currentStep - 1].description}
+          </h2>
         </div>
       )}
 
       {renderCurrentStep()}
-      {currentStep > 1 && <button onClick={handlePreviousStep}>Atrás</button>}
-    </div>
+    </ContainerSteps>
   );
 };
 

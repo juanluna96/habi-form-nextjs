@@ -4,6 +4,15 @@ import { setStep1Data } from "@/redux/reducers/formSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { setLoading } from "@/redux/reducers/loaderSlicer";
+import { BiSkipNextCircle } from "react-icons/bi";
+import {
+  FormContainer,
+  FormGroup,
+  Input,
+  Label,
+  StyledErrorMessage,
+  SubmitButton,
+} from "@/assets/styles/forms.style";
 
 const Step1: React.FC<{ onNextStep: () => void }> = ({ onNextStep }) => {
   const dispatch = useDispatch();
@@ -37,15 +46,16 @@ const Step1: React.FC<{ onNextStep: () => void }> = ({ onNextStep }) => {
     >
       {({ isSubmitting }) => (
         <Form>
-          <div>
-            <label htmlFor="fullName">Nombre y apellidos:</label>
-            <Field type="text" id="fullName" name="fullName" />
-            <ErrorMessage name="fullName" component="div" />
-          </div>
+          <FormGroup>
+            <Label htmlFor="fullName">Nombre y apellidos:</Label>
+            <Field as={Input} type="text" id="fullName" name="fullName" />
+            <StyledErrorMessage name="fullName" component="div" />
+          </FormGroup>
 
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Guardando..." : "Guardar"}
-          </button>
+          <SubmitButton type="submit" disabled={isSubmitting}>
+            <BiSkipNextCircle size={20} style={{ marginRight: "2px" }} />
+            Siguiente
+          </SubmitButton>
         </Form>
       )}
     </Formik>

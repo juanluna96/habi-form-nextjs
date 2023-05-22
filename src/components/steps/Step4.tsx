@@ -5,6 +5,14 @@ import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setStep4Data } from "@/redux/reducers/formSlice";
 import { setLoading } from "@/redux/reducers/loaderSlicer";
+import { BiSkipNextCircle } from "react-icons/bi";
+import {
+  FormGroup,
+  Input,
+  Label,
+  StyledErrorMessage,
+  SubmitButton,
+} from "@/assets/styles/forms.style";
 
 const Step4 = ({ onPreviousStep, onNextStep }) => {
   const dispatch = useDispatch();
@@ -31,20 +39,27 @@ const Step4 = ({ onPreviousStep, onNextStep }) => {
 
   return (
     <div>
-      <h2>Step 4: Número de piso</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <Form>
-          <div>
-            <label htmlFor="floorNumber">Número de piso:</label>
-            <Field type="number" id="floorNumber" name="floorNumber" />
-            <ErrorMessage name="floorNumber" component="div" />
-          </div>
+          <FormGroup>
+            <Label htmlFor="floorNumber">Número de piso:</Label>
+            <Field
+              as={Input}
+              type="number"
+              id="floorNumber"
+              name="floorNumber"
+            />
+            <StyledErrorMessage name="floorNumber" component="div" />
+          </FormGroup>
 
-          <button type="submit">Guardar</button>
+          <SubmitButton type="submit">
+            <BiSkipNextCircle size={20} style={{ marginRight: "2px" }} />
+            Siguiente
+          </SubmitButton>
         </Form>
       </Formik>
     </div>

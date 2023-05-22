@@ -4,6 +4,12 @@ import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setStep5Data } from "@/redux/reducers/formSlice";
 import { setLoading } from "@/redux/reducers/loaderSlicer";
+import { CheckboxInput, FormGroup } from "@/assets/styles/forms.style";
+import { StyledErrorMessage } from "@/assets/styles/forms.style";
+import { CheckboxContainer } from "@/assets/styles/forms.style";
+import { CheckboxLabel } from "@/assets/styles/forms.style";
+import { SubmitButton } from "@/assets/styles/forms.style";
+import { BiSkipNextCircle } from "react-icons/bi";
 
 const Step5 = ({ onPreviousStep, onNextStep }) => {
   const dispatch = useDispatch();
@@ -25,29 +31,39 @@ const Step5 = ({ onPreviousStep, onNextStep }) => {
 
   return (
     <div>
-      <h2>Paso 5: Opciones de Amenidades</h2>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
-          <div>
-            <label>
-              <Field type="checkbox" name="amenities.bbq" />
+          <CheckboxContainer>
+            <CheckboxLabel>
+              <Field as={CheckboxInput} type="checkbox" name="amenities.bbq" />
               Zona BBQ
-            </label>
-          </div>
-          <div>
-            <label>
-              <Field type="checkbox" name="amenities.communalRoom" />
+            </CheckboxLabel>
+          </CheckboxContainer>
+          <CheckboxContainer>
+            <CheckboxLabel>
+              <Field
+                as={CheckboxInput}
+                type="checkbox"
+                name="amenities.communalRoom"
+              />
               Salón Comunal
-            </label>
-          </div>
-          <div>
-            <label>
-              <Field type="checkbox" name="amenities.playground" />
+            </CheckboxLabel>
+          </CheckboxContainer>
+          <CheckboxContainer>
+            <CheckboxLabel>
+              <Field
+                as={CheckboxInput}
+                type="checkbox"
+                name="amenities.playground"
+              />
               Parque de Juegos
-            </label>
-          </div>
-          <ErrorMessage name="amenities" component="div" />
-          <button type="submit">Guardar</button>
+            </CheckboxLabel>
+          </CheckboxContainer>
+          <StyledErrorMessage name="amenities" component="div" />
+          <SubmitButton type="submit">
+            <BiSkipNextCircle size={20} style={{ marginRight: "2px" }} />
+            Siguiente
+          </SubmitButton>
         </Form>
       </Formik>
     </div>
