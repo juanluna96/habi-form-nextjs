@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const SummaryForm = ({ sideBar }) => {
   const STEPS = steps;
-  const router = useRouter();
+  //   const router = useRouter();
   const dispatch = useDispatch();
   const form = useSelector((state: RootState) => state.form);
   const { fullName, email, address, floorNumber, apartment_props } = form;
@@ -16,7 +16,7 @@ const SummaryForm = ({ sideBar }) => {
     dispatch(resetForm());
     dispatch(setCurrentStep(1));
 
-    router.push(STEPS[0].path);
+    // router.push(STEPS[0].path);
   };
 
   return (
