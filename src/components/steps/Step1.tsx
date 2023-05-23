@@ -13,7 +13,11 @@ import {
   SubmitButton,
 } from "@/assets/styles/forms.style";
 
-const Step1: React.FC<{ onNextStep: () => void }> = ({ onNextStep }) => {
+interface Step1Props {
+  onNextStep: boolean | (() => void);
+}
+
+const Step1: React.FC<Step1Props> = ({ onNextStep }) => {
   const dispatch = useDispatch();
   const fullName = useSelector((state: RootState) => state.form.fullName);
 
@@ -34,7 +38,9 @@ const Step1: React.FC<{ onNextStep: () => void }> = ({ onNextStep }) => {
     dispatch(setStep1Data({ fullName: values.fullName }));
     dispatch(setLoading(false));
 
-    onNextStep();
+    if (typeof onNextStep === "function") {
+      onNextStep();
+    }
   };
 
   return (

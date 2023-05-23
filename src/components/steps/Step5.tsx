@@ -11,7 +11,7 @@ import { CheckboxLabel } from "@/assets/styles/forms.style";
 import { SubmitButton } from "@/assets/styles/forms.style";
 import { BiSkipNextCircle } from "react-icons/bi";
 interface StepProps {
-  onNextStep: () => void;
+  onNextStep: boolean | (() => void);
 }
 
 const Step5: React.FC<StepProps> = ({ onNextStep }) => {
@@ -29,7 +29,9 @@ const Step5: React.FC<StepProps> = ({ onNextStep }) => {
     dispatch(setStep5Data({ apartment_props: values.amenities }));
     dispatch(setLoading(false));
 
-    onNextStep();
+    if (typeof onNextStep === "function") {
+      onNextStep();
+    }
   };
 
   return (
