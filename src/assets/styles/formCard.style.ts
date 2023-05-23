@@ -1,32 +1,42 @@
 import styled from "styled-components";
 
 export const FontFamilyContainer = styled.div`
-font-family: 'Montserrat', sans-serif;
-`
+  font-family: "Montserrat", sans-serif;
+`;
 
 export const BodyContainer = styled.div`
-position: relative;
-overflow: hidden;
-display: flex;
-width: 100%;
-height: 100vh;
-justify-content: center;
-align-items: center;
-`
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const MiddleCard = styled.div`
-position: relative;
-@media (max-width: 399px) {
-  width: 100%;
-}
-`
+  position: relative;
+  @media (max-width: 360px) {
+    width: 100%;
+  }
+  @media (min-width: 361px) and (max-width: 375px) {
+    width: 100%;
+  }
+  @media (min-width: 376px) and (max-width: 720px) {
+    width: 100%;
+  }
+`;
 
 export const FormCardContainer = styled.div`
   background-color: #ffffff;
   border: 2px solid #eaeaea;
   border-radius: 4px;
   padding: 20px;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
+
+  @media (max-width: 360px) {
+    padding: 20px 15px;
+  }
 `;
 
 export const FormCardTitle = styled.h2`
@@ -76,9 +86,22 @@ export const FormCardButton = styled.button`
 `;
 
 export const ContainerSteps = styled.div`
+  width: inherit;
   margin-right: 10px;
 
-  @media (max-width: 399px) {
+  @media (max-width: 720px) {
+    width: 100%;
+  }
+
+  @media (max-width: 360px) {
+    margin-right: 0px;
+  }
+
+  @media (min-width: 361px) and (max-width: 375px) {
+    margin-right: 0px;
+  }
+
+  @media (min-width: 376px) and (max-width: 720px) {
     margin-right: 0px;
   }
 `;
