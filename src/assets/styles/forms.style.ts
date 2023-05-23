@@ -21,7 +21,7 @@ export const FormGroup = styled.div`
 `;
 
 export const Label = styled.label`
-font-size: 1rem;
+  font-size: 1rem;
   margin-bottom: 5px;
   display: block;
   color: #888;
@@ -33,6 +33,10 @@ export const Input = styled.input`
   border-radius: 4px;
   width: 100%;
   max-width: 280px;
+
+  @media (max-width: 1020px) {
+    max-width: 95%;
+  }
 `;
 
 export const CheckboxContainer = styled.div`
@@ -45,7 +49,6 @@ export const CheckboxLabel = styled.label`
   margin-left: 5px;
   display: flex;
   align-items: center;
-  
 `;
 
 export const CheckboxInput = styled.input`
@@ -95,7 +98,7 @@ export const SubmitButton = styled.button`
     background-color: #5e02cc;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1020px) {
     width: 100%;
     font-weight: bold;
     text-transform: uppercase;
