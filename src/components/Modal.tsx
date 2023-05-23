@@ -8,6 +8,7 @@ import {
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { GrClose } from "react-icons/gr";
+
 interface ModalProps {
   show: boolean;
   onClose: () => void;
@@ -15,11 +16,16 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
+  const modalRoot = document.getElementById("modal-root");
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
     setIsBrowser(true);
   }, []);
+
+  if (!modalRoot) {
+    return null; // Otra opción es mostrar un mensaje de error o proporcionar una alternativa
+  }
 
   const handleCloseClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -42,10 +48,7 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
   ) : null;
 
   if (isBrowser) {
-    return ReactDOM.createPortal(
-      modalContent,
-      document.getElementById("modal-root")
-    );
+    return ReactDOM.createPortal(modalContent, modalRoot);
   } else {
     return null;
   }

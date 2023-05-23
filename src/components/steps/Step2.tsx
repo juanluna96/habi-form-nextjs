@@ -15,7 +15,7 @@ import {
 } from "@/assets/styles/forms.style";
 
 interface StepProps {
-  onNextStep: () => void;
+  onNextStep: boolean | (() => void);
 }
 
 const Step2: React.FC<StepProps> = ({ onNextStep }) => {
@@ -34,7 +34,9 @@ const Step2: React.FC<StepProps> = ({ onNextStep }) => {
     dispatch(setLoading(true));
     dispatch(setStep2Data({ email: values.email }));
     dispatch(setLoading(false));
-    onNextStep();
+    if (typeof onNextStep === "function") {
+      onNextStep();
+    }
   };
 
   return (
