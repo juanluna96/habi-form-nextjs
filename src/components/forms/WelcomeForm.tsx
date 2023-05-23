@@ -1,3 +1,4 @@
+import React from "react";
 import { ContainerWelcome, Heading } from "@/assets/styles/welcome.style";
 import { RootState } from "@/redux/store";
 import steps from "@/utils/StepsRoutes";
