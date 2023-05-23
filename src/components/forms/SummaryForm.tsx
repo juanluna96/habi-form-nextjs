@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "@/assets/styles/buttons.style";
 import { setCurrentStep } from "@/redux/reducers/counterSlice";
 import { resetForm } from "@/redux/reducers/formSlice";
@@ -60,26 +61,30 @@ const SummaryForm = ({ sideBar }) => {
     <SummaryContainer>
       <SummaryHeading>Resumen</SummaryHeading>
       <SummaryText>
-        Nombre y apellidos: <SummarySpan>{fullName}</SummarySpan>
+        Nombre y apellidos:{" "}
+        <SummarySpan data-testid="fullName">{fullName}</SummarySpan>
       </SummaryText>
       <SummaryText>
-        Correo electrónico: <SummarySpan>{email}</SummarySpan>
+        Correo electrónico:{" "}
+        <SummarySpan data-testid="email">{email}</SummarySpan>
       </SummaryText>
       <SummaryText>
-        Dirección del apartamento: <SummarySpan>{address}</SummarySpan>
+        Dirección del apartamento:{" "}
+        <SummarySpan data-testid="address">{address}</SummarySpan>
       </SummaryText>
       <SummaryText>
-        Número de piso: <SummarySpan>{floorNumber || ""}</SummarySpan>
+        Número de piso:{" "}
+        <SummarySpan data-testid="floorNumber">{floorNumber || ""}</SummarySpan>
       </SummaryText>
       <SummaryText>Opciones del apartamento:</SummaryText>
       <SummaryList>
-        <SummaryListItem>
+        <SummaryListItem data-testid="bbq">
           {apartmentIcon(apartment_props.bbq)} Zona BBQ
         </SummaryListItem>
-        <SummaryListItem>
+        <SummaryListItem data-testid="communalRoom">
           {apartmentIcon(apartment_props.communalRoom)} Salón comunal
         </SummaryListItem>
-        <SummaryListItem>
+        <SummaryListItem data-testid="playground">
           {apartmentIcon(apartment_props.playground)} Parque de juegos
         </SummaryListItem>
       </SummaryList>
