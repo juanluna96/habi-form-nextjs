@@ -32,15 +32,10 @@ const StepContainer: React.FC = () => {
   const renderCurrentStep = () => {
     const {
       component: StepComponent,
-      buttons: { back, next },
+      buttons: { next },
     } = steps[currentStep - 1];
 
-    return (
-      <StepComponent
-        onNextStep={next && handleNextStep}
-        onPreviousStep={back && handlePreviousStep}
-      />
-    );
+    return <StepComponent onNextStep={next && handleNextStep} />;
   };
 
   return (

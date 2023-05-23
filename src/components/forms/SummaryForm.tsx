@@ -22,7 +22,11 @@ import {
 } from "@/assets/styles/summary.style";
 import { useRouter } from "next/router";
 
-const SummaryForm = ({ sideBar }) => {
+interface SummaryProps {
+  sideBar: boolean;
+}
+
+const SummaryForm: React.FC<SummaryProps> = ({ sideBar }) => {
   const router = useRouter();
   const STEPS = steps;
   const dispatch = useDispatch();
@@ -44,7 +48,7 @@ const SummaryForm = ({ sideBar }) => {
     });
   };
 
-  const apartmentIcon = (state) => {
+  const apartmentIcon = (state: boolean) => {
     const color = state ? "#27AE60" : "#C0392B";
     return (
       <IconContext.Provider value={{ color }}>

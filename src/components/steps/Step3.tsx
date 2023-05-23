@@ -14,7 +14,7 @@ import {
   SubmitButton,
 } from "@/assets/styles/forms.style";
 interface StepProps {
-  onNextStep: () => void;
+  onNextStep: boolean | (() => void);
 }
 
 const Step3: React.FC<StepProps> = ({ onNextStep }) => {
@@ -34,7 +34,9 @@ const Step3: React.FC<StepProps> = ({ onNextStep }) => {
     dispatch(setStep3Data({ address: values.address }));
     dispatch(setLoading(false));
 
-    onNextStep();
+    if (typeof onNextStep === "function") {
+      onNextStep();
+    }
   };
 
   return (

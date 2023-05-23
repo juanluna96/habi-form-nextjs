@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "@/assets/styles/buttons.style";
 import { ContainerWelcome, Heading } from "@/assets/styles/welcome.style";
 import Layout from "@/components/Layout";
