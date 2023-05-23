@@ -1,3 +1,4 @@
+import React from "react";
 import { useCallback } from "react";
 import type { Engine } from "tsparticles-engine";
 import Particles from "react-particles";
